@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <main>
-      <h1>Find your favorite <span class="title-highlight">Japanese</span> Cusine</h1>
+      <h1>Find your Favorite <span class="title-highlight">Japanese</span> Cusine</h1>
       <select v-model="selected" @change="onChange($event)">
           <option v-for="option in options" v-bind:value="option.name" v-bind:key="option.id">
               {{ option.name }}
@@ -10,7 +10,7 @@
       <div class="show-result">
         <div class="title">{{ category }}</div>
         <div class="result" v-for="menu in menuList" v-bind:key="menu.id">
-          <div>* {{ menu.name }}</div>
+          <div class="name">* {{ menu.name }}</div>
           <img width=200px height=200px :src="menu.url"/>
         </div>
       </div>
@@ -116,11 +116,16 @@ select {
   border-bottom: 1px solid;
 }
 
+
 .show-result .result img{
+  min-width: 200px;
   margin-right: 0;
   margin-left: auto;
 }
 
+@media screen and (max-width: 425px) {
+  .show-result{ width: 80%; }
+}
 
 footer {
   position: relative;
