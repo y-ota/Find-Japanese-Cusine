@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.dcf81844bfd433935faede42624e3ead.js"
+  "precache-manifest.92d0be2c3a41614ac2d29c74a6de5084.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "show-menu-using-jexia"});
