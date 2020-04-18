@@ -14,8 +14,9 @@ This application is using Vue.js and Jexia.
 git clone https://github.com/y-ota/Find-Japanese-Cusine.git
 npm install
 npm run serve
+# http://localhost:8080
 ```
-http://localhost:8080
+
 
 ## Licnense
 
