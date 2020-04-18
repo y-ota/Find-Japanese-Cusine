@@ -20,10 +20,11 @@ export default class AppComponent extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #444444;
+}
+
+body {
   background-color: #F5F5F5;
-  width: 100vw;
-  height: 100vh;
+  color: #444444;
 }
 
 #nav {

@@ -1,18 +1,21 @@
 <template>
   <div class="hello">
-    <h1>Find your favorite <span class="title-highlight">Japanese</span> Cusine</h1>
-    <select v-model="selected" @change="onChange($event)">
-        <option v-for="option in options" v-bind:value="option.name" v-bind:key="option.id">
-            {{ option.name }}
-        </option>
-    </select>
-    <div class="show-result">
-      <div class="title">{{ category }}</div>
-      <div class="result" v-for="menu in menuList" v-bind:key="menu.id">
-        <div>* {{ menu.name }}</div>
-        <img width=200px height=200px src="https://d1f5hsy4d47upe.cloudfront.net/fb/fb68e3a3989975582120cdc9619c9528_t.jpeg"/>
+    <main>
+      <h1>Find your favorite <span class="title-highlight">Japanese</span> Cusine</h1>
+      <select v-model="selected" @change="onChange($event)">
+          <option v-for="option in options" v-bind:value="option.name" v-bind:key="option.id">
+              {{ option.name }}
+          </option>
+      </select>
+      <div class="show-result">
+        <div class="title">{{ category }}</div>
+        <div class="result" v-for="menu in menuList" v-bind:key="menu.id">
+          <div>* {{ menu.name }}</div>
+          <img width=200px height=200px :src="menu.url"/>
+        </div>
       </div>
-    </div>
+    </main>
+    <footer>© 2020 Yusuke Ota.</footer>
   </div>
 </template>
 
@@ -31,45 +34,48 @@ export interface Menu {
 export default class Home extends Vue {
     category = "";
     menuList: Menu[] = [];
-    selected =  '';
+    selected = "";
     options =  [
         { id: 1, name: 'Pot' },
-        { id: 2, name: 'Bowl' },
-        { id: 3, name: 'Fish' },
-        { id: 4, name: 'Meat' },
-        { id: 5, name: 'Noodles' },
+        { id: 2, name: 'Fish' },
+        { id: 3, name: 'Meat' },
+        { id: 4, name: 'Noodles' },
       ]
+    ds = dataOperations();
 
-
-    onChange(event){
-      this.menuList = [];
-      this.category = event.target.value;
-      const ds = dataOperations();
-
+    mounted() {
+      const initCategory = 'Pot';
+      this.category = initCategory;
+      this.selected = initCategory;
       jexiaClient().init({
         projectID: "7a46b668-15e4-4d67-8f12-a2fb2cc41e0e",
         key: "0881c9e1-13d7-450f-b854-69e3f914afcd",
         secret: "UQhEH+JvH3MWAm5MJa3naqgwEdfy6NbTIUphObjVzA4/YvA5Ql4jOzvAOnrDlciIsM5p5K2rrpVpd9cyO/rL1w==",
-      }, ds);
+      }, this.ds);
 
-      const orders = ds.dataset("menu");
+      this.getData(initCategory);
+    }
+
+    getData(category: string){
+      this.menuList = [];
+      this.category = category;
+
+      const orders = this.ds.dataset("menu");
       const selectQuery = orders
         .select()
-        .where(field => field("category").isEqualTo(this.category ));
+        .where(field => field("category").isEqualTo(this.category));
 
       selectQuery.subscribe(records => { 
-          // You will always get an array of created records, including their 
-          // generated IDs (even when inserting a single record) 
-          console.log(records);
-
           this.menuList = records;
         }, 
         error => { 
-          // If something goes wrong, the error information is accessible here 
+          console.error(error);
       }); 
     }
 
-
+    onChange(event: any){
+      this.getData(event.target.value);
+    }
 }
 </script>
 
@@ -113,6 +119,13 @@ select {
 .show-result .result img{
   margin-right: 0;
   margin-left: auto;
+}
+
+
+footer {
+  position: relative;
+  top:90px;
+  padding-bottom: 50px;
 }
 
 </style>
