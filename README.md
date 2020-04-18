@@ -19,7 +19,7 @@ http://localhost:8080
 
 ## Licnense
 
-
+[MIT License](https://github.com/y-ota/Find-Japanese-Cusine/blob/master/LICENSE)
 
 
 
