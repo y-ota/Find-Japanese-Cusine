@@ -10,7 +10,7 @@
       <div class="show-result">
         <div class="title">{{ category }}</div>
         <div class="result" v-for="menu in menuList" v-bind:key="menu.id">
-          <div class="name">* {{ menu.name }}</div>
+          <div class="name">{{ menu.name }}</div>
           <img width=200px height=200px :src="menu.url"/>
         </div>
       </div>
@@ -124,7 +124,7 @@ select {
 }
 
 @media screen and (max-width: 425px) {
-  .show-result{ width: 80%; }
+  .show-result{ width: 90%; }
 }
 
 footer {
