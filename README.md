@@ -9,12 +9,13 @@ This application is using Vue.js and Jexia.
 * Jexia(https://app.jexia.com/)
 * vue-cli
 
-## Install & Debug
+## Install
 ```
 git clone https://github.com/y-ota/Find-Japanese-Cusine.git
 npm install
 npm run serve
 ```
+http://localhost:8080
 
 ## Licnense
 
