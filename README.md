@@ -19,6 +19,19 @@ npm run serve
 # http://localhost:8080
 ```
 
+## Datasets
+
+This application is using [the Datasets service in Jexia](https://app.jexia.com/).
+I defined the below dataset.
+
+### Menu
+
+|  Field  |  Description  |
+| ---- | ---- |
+|  name  |  cusine name  |
+|  category  |  cusine category  |
+|  url  |  cusine image url  |
+
 ## Licnense
 
 [MIT License](https://github.com/y-ota/Find-Japanese-Cusine/blob/master/LICENSE)
