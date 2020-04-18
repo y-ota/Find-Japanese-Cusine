@@ -7,6 +7,7 @@ This application is using Vue.js and Jexia.
 
 ## Requirements
 * Jexia(https://app.jexia.com/)
+* vue-cli
 
 ## Install
 * `npm install`
